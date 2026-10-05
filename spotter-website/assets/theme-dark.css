@@ -1,0 +1,126 @@
+/* Dark themes for the Spotter site. Loaded only when assets/config.js sets theme to 'glass' or 'matte'.
+   To go back to the plain light site, set  theme: 'plain'  in assets/config.js. Nothing else changes. */
+
+:root[data-theme] {
+  color-scheme: dark;
+  --chalk: #0a0c0f;
+  --paper: #14171b;
+  --ink: #f3f5f7;
+  --slate: #9ba4ad;
+  --line: rgba(255, 255, 255, .12);
+  --mist: rgba(255, 255, 255, .07);
+  --blue: #7aa7ff;
+  --blue-dark: #5f8fe8;
+  --green: #4fc27e;
+  --red: #ff6b60;
+  --btn: #2d68d0;
+  --btn-hover: #2457b3;
+}
+
+/* The phone mock-ups show a light app, so they keep the light colours. */
+:root[data-theme] .phone,
+:root[data-theme] .shot-phone {
+  --chalk: #f4f5f2; --paper: #ffffff; --ink: #1e2226; --slate: #646d76; --line: #dcdfda; --mist: #e9ece7;
+  --blue: #1d4fa8; --green: #2e7d4f; --red: #c8372d;
+  color: #1e2226;
+}
+
+[data-theme] body { background: var(--chalk); color: var(--ink); }
+[data-theme] a { color: var(--blue); }
+[data-theme] a:hover { color: #a9c6ff; }
+[data-theme] .lead { color: var(--slate); }
+
+/* Buttons keep white text on a brand-blue fill. */
+[data-theme] .btn { background: var(--btn); border-color: var(--btn); color: #fff; }
+[data-theme] .btn:hover { background: var(--btn-hover); border-color: var(--btn-hover); color: #fff; }
+[data-theme] .btn-outline { background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .22); color: var(--ink); }
+[data-theme] .btn-outline:hover { background: rgba(255, 255, 255, .12); color: var(--ink); }
+[data-theme] .badge { background: var(--btn); color: #fff; }
+[data-theme] .nav-links a.btn { color: #fff; border-bottom-color: var(--btn); }
+[data-theme] .cta .btn[style] { color: #0a0c0f !important; }
+[data-theme] .cta .btn.btn-outline[style] { color: #fff !important; }
+
+/* Dark sections and footer */
+[data-theme] .band-dark { background: #05070a; color: var(--ink); border-block: 1px solid var(--line); }
+[data-theme] .band-dark p, [data-theme] .band-dark .lead { color: var(--slate); }
+[data-theme] .site-footer { background: #05070a; border-top: 1px solid var(--line); color: var(--slate); }
+[data-theme] .site-footer a { color: var(--ink); }
+[data-theme] .footer-bottom { border-top-color: var(--line); color: var(--slate); }
+[data-theme] .callout { background: rgba(240, 185, 40, .1); border-color: rgba(240, 185, 40, .35); color: var(--ink); }
+[data-theme] .skip { background: var(--blue); color: #0a0c0f; }
+
+/* Form fields */
+[data-theme] .field input, [data-theme] .field select, [data-theme] .field textarea { background: rgba(255, 255, 255, .05); border-color: rgba(255, 255, 255, .16); color: var(--ink); }
+[data-theme] .field input:focus, [data-theme] .field select:focus, [data-theme] .field textarea:focus { outline-color: rgba(122, 167, 255, .45); border-color: var(--blue); }
+[data-theme] .notice { color: var(--ink); }
+
+/* ------------------------------------------------------------------ */
+/* GLASS: frosted panels floating over soft coloured light             */
+/* ------------------------------------------------------------------ */
+[data-theme="glass"] body { background: #080a0e; }
+[data-theme="glass"] body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(42vw 42vw at 12% 8%, rgba(45, 104, 208, .38), transparent 70%),
+    radial-gradient(38vw 38vw at 88% 22%, rgba(240, 185, 40, .16), transparent 70%),
+    radial-gradient(46vw 46vw at 70% 92%, rgba(46, 125, 79, .22), transparent 70%),
+    radial-gradient(36vw 36vw at 6% 78%, rgba(200, 55, 45, .14), transparent 70%);
+}
+[data-theme="glass"] .site-header { background: rgba(10, 12, 16, .55); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-bottom-color: rgba(255, 255, 255, .1); }
+[data-theme="glass"] .band { background: transparent; border-block-color: rgba(255, 255, 255, .06); }
+[data-theme="glass"] .card,
+[data-theme="glass"] .faq details,
+[data-theme="glass"] .contact-grid > .card,
+[data-theme="glass"] .notice {
+  background: linear-gradient(145deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .03));
+  border: 1px solid rgba(255, 255, 255, .14);
+  backdrop-filter: blur(22px) saturate(150%); -webkit-backdrop-filter: blur(22px) saturate(150%);
+  box-shadow: 0 24px 48px -24px rgba(0, 0, 0, .7), inset 0 1px 0 rgba(255, 255, 255, .14);
+}
+[data-theme="glass"] .card { transition: transform .25s ease, border-color .25s ease; }
+[data-theme="glass"] .card:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, .26); }
+[data-theme="glass"] .price-card.featured { border-color: rgba(122, 167, 255, .7); box-shadow: 0 24px 60px -20px rgba(45, 104, 208, .55), inset 0 1px 0 rgba(255, 255, 255, .18); }
+[data-theme="glass"] .icon { background: rgba(122, 167, 255, .14); border: 1px solid rgba(122, 167, 255, .25); }
+[data-theme="glass"] .tag { background: rgba(255, 255, 255, .1); }
+[data-theme="glass"] .hero .phone { box-shadow: 0 40px 90px -20px rgba(45, 104, 208, .55), 0 0 0 1px rgba(255, 255, 255, .12); }
+[data-theme="glass"] .shot-phone { box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .8), 0 0 0 1px rgba(255, 255, 255, .12); }
+[data-theme="glass"] .arrow { background: rgba(255, 255, 255, .08); border-color: rgba(255, 255, 255, .2); color: var(--ink); backdrop-filter: blur(10px); }
+[data-theme="glass"] .arrow:hover { background: rgba(255, 255, 255, .16); }
+[data-theme="glass"] .nav-links { background: transparent; }
+@media (max-width: 760px) {
+  [data-theme="glass"] .nav-links { background: rgba(10, 12, 16, .92); backdrop-filter: blur(20px); border-bottom-color: rgba(255, 255, 255, .1); }
+}
+/* If a browser can't blur, fall back to a solid dark panel so text stays readable. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  [data-theme="glass"] .card, [data-theme="glass"] .faq details, [data-theme="glass"] .contact-grid > .card { background: #14181d; }
+  [data-theme="glass"] .site-header { background: #0a0c10; }
+}
+
+/* ------------------------------------------------------------------ */
+/* MATTE: flat black sheets with fine edges and soft shadows           */
+/* ------------------------------------------------------------------ */
+[data-theme="matte"] body { background: #08090a; }
+[data-theme="matte"] .site-header { background: rgba(8, 9, 10, .94); border-bottom-color: #1d2024; }
+[data-theme="matte"] .band { background: #0d0e10; border-block-color: #1b1d20; }
+[data-theme="matte"] .card,
+[data-theme="matte"] .faq details,
+[data-theme="matte"] .contact-grid > .card,
+[data-theme="matte"] .notice {
+  background: #131416;
+  border: 1px solid #23262a;
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, .9), inset 0 1px 0 rgba(255, 255, 255, .05);
+}
+[data-theme="matte"] .band .card { background: #17181b; }
+[data-theme="matte"] .price-card.featured { border-color: #4a77d4; box-shadow: 0 18px 40px -22px rgba(0, 0, 0, .9), 0 0 0 1px #4a77d4; }
+[data-theme="matte"] .icon { background: #1f2227; }
+[data-theme="matte"] .tag { background: #1f2227; }
+[data-theme="matte"] .btn-outline { background: #131416; border-color: #2a2d32; }
+[data-theme="matte"] .btn-outline:hover { background: #1c1e21; }
+[data-theme="matte"] .field input, [data-theme="matte"] .field select, [data-theme="matte"] .field textarea { background: #0d0e10; border-color: #2a2d32; }
+[data-theme="matte"] .hero .phone, [data-theme="matte"] .shot-phone { box-shadow: 0 30px 60px -26px #000, 0 0 0 1px #2a2d32; }
+[data-theme="matte"] .arrow { background: #131416; border-color: #2a2d32; color: var(--ink); }
+[data-theme="matte"] .arrow:hover { background: #1c1e21; }
+[data-theme="matte"] .nav-links { background: transparent; }
+@media (max-width: 760px) { [data-theme="matte"] .nav-links { background: #0a0b0c; border-bottom-color: #1d2024; } }
+
+@media (prefers-reduced-motion: reduce) { [data-theme="glass"] .card { transition: none; } [data-theme="glass"] .card:hover { transform: none; } }
