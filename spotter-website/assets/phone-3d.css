@@ -1,4 +1,5 @@
-﻿/* Embossed, 3D-style phone mock-ups. Loaded only when assets/config.js has  phones: '3d'.
+﻿/* Embossed phone mock-ups (bevelled metal frame, recessed glass, raised buttons and cards).
+   Loaded only when assets/config.js has  phones: 'embossed'.
    To go back to the flat phones, set  phones: 'flat'  there. Nothing else changes. */
 
 html.phones-3d .phone,
@@ -13,13 +14,7 @@ html.phones-3d .shot-phone {
     0 0 0 1px rgba(0, 0, 0, .55),                     /* crisp outline */
     0 18px 22px -10px rgba(0, 0, 0, .55),             /* contact shadow */
     0 46px 70px -24px rgba(0, 0, 0, .6);              /* soft drop shadow for depth */
-  transform: perspective(1100px) rotateY(-11deg) rotateX(3deg);
-  transform-origin: 60% 50%;
-  transition: transform .45s cubic-bezier(.2, .7, .2, 1), box-shadow .45s ease;
-  will-change: transform;
 }
-html.phones-3d .phone:hover,
-html.phones-3d .shot-phone:hover { transform: perspective(1100px) rotateY(0) rotateX(0) translateY(-8px); }
 
 /* Side buttons: power on the right, volume on the left, raised from the frame. */
 html.phones-3d .phone::before,
@@ -73,13 +68,4 @@ html.phones-3d .s-controls span { box-shadow: 0 1px 0 rgba(255, 255, 255, .08) i
 
 /* Room for the shadows and buttons inside the scrolling gallery. */
 html.phones-3d .carousel-track { padding-top: 24px; padding-bottom: 60px; }
-html.phones-3d .slide { perspective: 1100px; }
-
-@media (max-width: 760px) {
-  html.phones-3d .phone, html.phones-3d .shot-phone { transform: perspective(1100px) rotateY(-5deg) rotateX(1.5deg); }
-}
-@media (prefers-reduced-motion: reduce) {
-  html.phones-3d .phone, html.phones-3d .shot-phone { transition: none; }
-  html.phones-3d .phone:hover, html.phones-3d .shot-phone:hover { transform: perspective(1100px) rotateY(-11deg) rotateX(3deg); }
-}
 

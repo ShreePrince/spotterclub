@@ -271,3 +271,38 @@ section { padding: clamp(56px, 8vw, 104px) 0; }
 /* Keep the header button text white (nav link colour would otherwise win) */
 .nav-links a.btn { color: #fff; border-bottom-color: var(--blue); }
 .nav-links a.btn:hover { color: #fff; }
+
+/* Curved gallery: the centre screen faces you and the others angle away, like standing inside a cylinder.
+   Applied only when assets/config.js has  carousel: 'curved'  (script.js adds the .curved class). */
+.carousel.curved .carousel-track { perspective: 1000px; perspective-origin: 50% 45%; padding-inline: calc(50% - 140px); scroll-padding-inline: 0; gap: 18px; overflow-y: hidden; }
+.carousel.curved .slide { scroll-snap-align: center; transform: rotateY(var(--rot, 0deg)) translateX(var(--tx, 0px)) scale(var(--scale, 1)); opacity: var(--op, 1); transform-origin: 50% 50%; backface-visibility: hidden; }
+.carousel.curved .slide figcaption { transition: opacity .3s ease; }
+@media (max-width: 760px) { .carousel.curved .carousel-track { perspective: 800px; } }
+
+/* Light / dark switch in the header */
+.nav { justify-content: flex-start; }
+.brand { margin-right: auto; }
+.nav-links { order: 2; }
+.theme-toggle { order: 3; display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; border: 1.5px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; margin-left: 20px; }
+.theme-toggle[hidden] { display: none; }
+.theme-toggle:hover { background: var(--mist); }
+.theme-toggle svg { width: 22px; height: 22px; grid-area: 1 / 1; }
+.theme-toggle .i-sun { display: none; }
+:root[data-theme] .theme-toggle .i-sun { display: block; }
+:root[data-theme] .theme-toggle .i-moon { display: none; }
+.nav-toggle { order: 4; }
+@media (max-width: 760px) { .theme-toggle { margin-left: 0; margin-right: 10px; } }
+
+/* Switching light and dark: colours glide over about a second, with a sunset (to dark) or sunrise (to light) glow. */
+html.theme-fade, html.theme-fade *, html.theme-fade *::before, html.theme-fade *::after {
+  transition: background-color .9s ease, color .9s ease, border-color .9s ease, box-shadow .9s ease, fill .9s ease, stroke .9s ease, opacity .9s ease !important;
+}
+.theme-wash { position: fixed; inset: 0; z-index: 1000; pointer-events: none; opacity: 0; }
+.theme-wash.sunset { background: linear-gradient(to top, rgba(255, 120, 50, .62), rgba(190, 70, 120, .4) 45%, rgba(40, 40, 110, .22) 80%, transparent); animation: wash .95s ease-in-out forwards; }
+.theme-wash.sunrise { background: linear-gradient(to top, rgba(255, 175, 70, .6), rgba(255, 215, 150, .4) 45%, rgba(255, 245, 220, .2) 80%, transparent); animation: wash .95s ease-in-out forwards; }
+@keyframes wash { 0% { opacity: 0; } 45% { opacity: 1; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { html.theme-fade, html.theme-fade * { transition: none !important; } .theme-wash { display: none; } }
+
+/* Header button: give the text breathing room on both sides (the nav link padding was overriding the button's) */
+.nav-links a.btn { padding: 0 24px; }
+@media (max-width: 760px) { .nav-links a.btn { padding: 0 24px; } }

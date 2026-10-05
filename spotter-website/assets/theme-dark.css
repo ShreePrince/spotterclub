@@ -1,4 +1,4 @@
-/* Dark themes for the Spotter site. Loaded only when assets/config.js sets theme to 'glass' or 'matte'.
+﻿/* Dark themes for the Spotter site. Loaded only when assets/config.js sets theme to 'glass' or 'matte'.
    To go back to the plain light site, set  theme: 'plain'  in assets/config.js. Nothing else changes. */
 
 :root[data-theme] {
@@ -57,15 +57,19 @@
 /* ------------------------------------------------------------------ */
 /* GLASS: frosted panels floating over soft coloured light             */
 /* ------------------------------------------------------------------ */
-[data-theme="glass"] body { background: #080a0e; }
-[data-theme="glass"] body::before {
-  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+[data-theme="glass"] body { background: transparent; }
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .9s ease;
   background:
     radial-gradient(42vw 42vw at 12% 8%, rgba(45, 104, 208, .38), transparent 70%),
     radial-gradient(38vw 38vw at 88% 22%, rgba(240, 185, 40, .16), transparent 70%),
     radial-gradient(46vw 46vw at 70% 92%, rgba(46, 125, 79, .22), transparent 70%),
     radial-gradient(36vw 36vw at 6% 78%, rgba(200, 55, 45, .14), transparent 70%);
 }
+[data-theme="glass"] body::before { opacity: 1; }
+html { background-color: #f4f5f2; }
+html[data-theme="glass"] { background-color: #080a0e; }
+html[data-theme="matte"] { background-color: #08090a; }
 [data-theme="glass"] .site-header { background: rgba(10, 12, 16, .55); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border-bottom-color: rgba(255, 255, 255, .1); }
 [data-theme="glass"] .band { background: transparent; border-block-color: rgba(255, 255, 255, .06); }
 [data-theme="glass"] .card,
@@ -124,3 +128,4 @@
 @media (max-width: 760px) { [data-theme="matte"] .nav-links { background: #0a0b0c; border-bottom-color: #1d2024; } }
 
 @media (prefers-reduced-motion: reduce) { [data-theme="glass"] .card { transition: none; } [data-theme="glass"] .card:hover { transform: none; } }
+
