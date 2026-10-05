@@ -64,3 +64,45 @@
     notice.classList.add('show');
   });
 })();
+
+// App screenshots carousel: arrows, dots, and a gentle auto-slide that stops on hover, focus or touch.
+(function () {
+  var root = document.querySelector('[data-carousel]');
+  if (!root) return;
+  var track = root.querySelector('.carousel-track');
+  var slides = root.querySelectorAll('.slide');
+  var dots = root.querySelectorAll('.dots button');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var paused = reduce;
+  var index = 0;
+
+  function go(i) {
+    index = (i + slides.length) % slides.length;
+    track.scrollTo({ left: slides[index].offsetLeft - slides[0].offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
+  }
+  function current() {
+    var best = 0, bestDist = Infinity, left = track.scrollLeft + slides[0].offsetLeft;
+    for (var i = 0; i < slides.length; i++) {
+      var d = Math.abs(slides[i].offsetLeft - left);
+      if (d < bestDist) { bestDist = d; best = i; }
+    }
+    return best;
+  }
+  track.addEventListener('scroll', function () {
+    index = current();
+    dots.forEach(function (d, i) { d.setAttribute('aria-selected', String(i === index)); });
+  }, { passive: true });
+  root.querySelectorAll('.arrow').forEach(function (b) {
+    b.addEventListener('click', function () { paused = true; go(index + Number(b.dataset.dir)); });
+  });
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { paused = true; go(i); }); });
+  ['mouseenter', 'focusin', 'touchstart', 'pointerdown'].forEach(function (e) {
+    root.addEventListener(e, function () { paused = true; }, { passive: true });
+  });
+  root.addEventListener('mouseleave', function () { if (!reduce) paused = false; });
+  setInterval(function () {
+    if (paused || document.hidden) return;
+    var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    go(atEnd ? 0 : index + 1);
+  }, 4500);
+})();

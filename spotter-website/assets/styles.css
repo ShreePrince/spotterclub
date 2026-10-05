@@ -198,3 +198,76 @@ section { padding: clamp(56px, 8vw, 104px) 0; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
 
+
+/* App screenshots carousel */
+.showcase { padding-bottom: clamp(40px, 6vw, 72px); overflow: hidden; }
+.carousel-track { display: flex; gap: 32px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 8px max(20px, calc((100vw - var(--max)) / 2)) 28px; scroll-padding-inline: max(20px, calc((100vw - var(--max)) / 2)); scrollbar-width: none; }
+.carousel-track::-webkit-scrollbar { display: none; }
+.slide { flex: 0 0 280px; margin: 0; scroll-snap-align: start; }
+.slide figcaption { margin-top: 22px; padding-inline: 6px; }
+.slide figcaption h3 { font-size: 1.5rem; margin-bottom: .25em; }
+.slide figcaption p { color: var(--slate); font-size: 1rem; margin: 0; }
+.shot-phone { background: var(--ink); border-radius: 40px; padding: 10px; box-shadow: 0 24px 48px -22px rgba(30, 34, 38, .5); }
+.shot-screen { background: var(--chalk); border-radius: 31px; height: 540px; padding: 18px 14px 0; display: flex; flex-direction: column; gap: 10px; overflow: hidden; position: relative; font-size: 14px; line-height: 1.35; }
+.shot-screen.dark { background: #1e2226; color: #fff; padding-bottom: 14px; }
+.s-date { font-size: 12px; color: var(--slate); }
+.s-title { font-family: var(--display); font-weight: 700; font-size: 1.9rem; line-height: 1; }
+.s-card { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; }
+.s-card strong, .s-day strong { display: block; font-size: 14.5px; }
+.s-card small, .s-day small { display: block; color: var(--slate); font-size: 12px; }
+.s-card.dark { background: #2a2f34; border-color: #2a2f34; color: #fff; }
+.s-card.dark small { color: #9aa3ab; }
+.s-card.dark2 { background: #2a2f34; border-color: #3e454c; color: #fff; }
+.s-card.dark2 small { color: #9aa3ab; }
+.s-pill { display: inline-block; margin-top: 10px; background: var(--blue); color: #fff; font-weight: 600; font-size: 13px; padding: 7px 14px; border-radius: 10px; }
+.s-row { display: flex; gap: 10px; align-items: center; }
+.shot-tabs { margin: auto -14px 0; border-top: 1px solid var(--line); background: var(--paper); display: flex; justify-content: space-around; padding: 11px 0 14px; font-size: 12px; color: var(--slate); }
+.shot-tabs .on { color: var(--blue); font-weight: 600; }
+.avatar.big { width: 76px; height: 76px; font-size: 1.5rem; }
+.s-day { display: flex; align-items: center; gap: 10px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px; }
+.s-day b { width: 30px; font-family: var(--display); font-size: 1.25rem; font-weight: 700; }
+.s-day div { flex: 1; }
+.s-day i { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--line); }
+.s-day.done i { background: var(--green); border-color: var(--green); }
+.s-day.now { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
+.s-day.now i { border-color: var(--blue); }
+.s-day.rest { background: transparent; }
+.s-day.rest i { visibility: hidden; }
+.s-live-top { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; color: #9aa3ab; }
+.s-live-top b { color: #fff; font-family: var(--display); font-size: 1.5rem; }
+.s-video { background: #2a2f34; border-radius: 18px; height: 190px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; position: relative; }
+.s-video small { color: #9aa3ab; font-size: 12px; }
+.s-self { position: absolute; right: 10px; bottom: 10px; width: 54px; height: 70px; border-radius: 10px; background: linear-gradient(160deg, #4a525a, #343a40); border: 2px solid #1e2226; }
+.s-target { font-family: var(--display); font-weight: 700; font-size: 2.3rem; line-height: 1.1; }
+.s-target em { font-style: normal; font-family: var(--body); font-weight: 500; font-size: 13px; color: #9aa3ab; }
+.s-controls { display: flex; gap: 8px; margin-top: auto; }
+.s-controls span { flex: 1; text-align: center; font-size: 13px; font-weight: 600; padding: 12px 0; border-radius: 12px; border: 1.5px solid #3e454c; }
+.s-controls .end { background: var(--red); border-color: var(--red); }
+.s-chat-head { display: flex; gap: 10px; align-items: center; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.s-chat-head strong { display: block; font-size: 14.5px; }
+.s-chat-head small { color: var(--slate); font-size: 12px; }
+.s-bubble { max-width: 82%; padding: 9px 12px; border-radius: 16px; font-size: 13px; }
+.s-bubble.them { background: var(--paper); border: 1px solid var(--line); border-bottom-left-radius: 5px; align-self: flex-start; }
+.s-bubble.me { background: var(--blue); color: #fff; border-bottom-right-radius: 5px; align-self: flex-end; }
+.s-input { margin-top: auto; margin-bottom: 14px; border: 1.5px solid var(--line); background: var(--paper); border-radius: 22px; padding: 10px 14px; color: var(--slate); font-size: 13px; }
+.s-stats { display: flex; justify-content: space-between; text-align: center; }
+.s-stats b { display: block; font-family: var(--display); font-size: 1.9rem; line-height: 1; color: var(--blue); }
+.s-stats small { font-size: 11px; line-height: 1.2; }
+.s-bars { display: flex; align-items: flex-end; gap: 6px; height: 74px; margin-top: 10px; }
+.s-bars span { flex: 1; background: var(--line); border-radius: 4px 4px 0 0; }
+.s-bars span.hi { background: var(--blue); }
+.s-line { margin-top: 8px; height: 48px; }
+.s-line svg { width: 100%; height: 100%; display: block; }
+.carousel-controls { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.dots { display: flex; gap: 10px; }
+.dots button { width: 12px; height: 12px; border-radius: 50%; border: 0; padding: 0; background: var(--line); cursor: pointer; }
+.dots button[aria-selected="true"] { background: var(--blue); transform: scale(1.25); }
+.arrows { display: flex; gap: 10px; }
+.arrow { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--line); background: var(--paper); font-size: 1.2rem; cursor: pointer; color: var(--ink); }
+.arrow:hover { background: var(--mist); }
+.shot-note { margin-top: 14px; font-size: .9rem; color: var(--slate); }
+@media (prefers-reduced-motion: reduce) { .carousel-track { scroll-behavior: auto; } }
+
+/* Keep the header button text white (nav link colour would otherwise win) */
+.nav-links a.btn { color: #fff; border-bottom-color: var(--blue); }
+.nav-links a.btn:hover { color: #fff; }
